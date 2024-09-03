@@ -1,0 +1,37 @@
+﻿namespace Project.DAL.Entities
+{
+    public class Employee
+    {
+        public int Employee_Id { get; set; }
+
+        public string? Employee_Fname { get; set; }
+
+        public string? Employee_Lname { get; set; }
+
+        public string? Employee_Email { get; set; }
+
+        public string? Employee_Phone { get; set; }
+
+        public string? Address { get; set; }
+
+        public double Employee_Salary { get; set; }
+
+        public DateTime HireDate { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public bool IsUpdated { get; set; }
+
+        public DateTime CreationDate { get; set; }
+
+        public DateTime DeletedDate { get; set; }
+
+        public DateTime UpdatedDate { get; set; }
+
+        public int? Department_Id { get; set; }
+
+        public Department? Department { get; set; }
+    }
+}

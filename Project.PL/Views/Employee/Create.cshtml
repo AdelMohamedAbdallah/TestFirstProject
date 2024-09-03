@@ -1,0 +1,55 @@
+﻿@model EmployeeVM
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Layout/MainLayout.cshtml";
+}
+
+<form  asp-action="Create"  asp-controller="Employee" class="form-group">
+    <label asp-for="Employee_Fname">First Name</label>
+    <br />
+    <input type="text" asp-for="Employee_Fname"  class="form-control"/>
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Lname">Last Name</label>
+    <br />
+    <input type="text" asp-for="Employee_Lname" class="form-control" />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Address">Address</label>
+    <br />
+    <input type="text" asp-for="Address" class="form-control" />
+    <span asp-validation-for="Address" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Email">Email</label>
+    <br />
+    <input type="email" asp-for="Employee_Email" class="form-control" />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Phone">Phone Number</label>
+    <br />
+    <input type="text" asp-for="Employee_Phone" class="form-control" />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Salary">Salary</label>
+    <br />
+    <input type="text" asp-for="Employee_Salary" class="form-control" />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="HireDate">Hire Date</label>
+    <br />
+    <input type="date" asp-for="HireDate" class="form-control" />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <select asp-for="Department_Id" asp-items="ViewBag.departmentlist">
+        <option>Department</option>
+    </select>
+    <br />
+    <center>
+        <input type="submit" value="Save" class="btn btn-success" />
+        <input type="submit" value="Reset" class="btn btn-warning" />
+        <a asp-controller="Employee" asp-action="EmployeeServices" class="btn btn-danger">Cancel</a>
+    </center>
+
+</form>
+
+

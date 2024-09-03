@@ -1,0 +1,36 @@
+﻿@model List<DepartmentVM> 
+
+@{
+    ViewBag.Title = "Department Services";
+}
+
+<style>
+    td,tbody,thead,tr,th{
+        text-align : center !important;
+    }
+</style>
+
+<a asp-controller="Department" asp-action="Create" class="btn btn-success">Create new department</a>
+<br />
+<table  class=" table table-hover table-striped text-center table-bordered  font-bold">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td> @item.Department_Name </td>
+                <td> @item.Department_Code </td>
+                    <td> <a asp-controller="Department" asp-action="Details" asp-route-id="@item.Department_Id"  class="btn btn-success">Details</a></td>
+                <td> <a asp-controller="Department" asp-action="Update" asp-route-id="@item.Department_Id" class="btn btn-warning">Update</a></td>
+                <td> <a asp-controller="Department" asp-action="Delete" asp-route-id="@item.Department_Id" class="btn btn-danger">Delete</a></td>
+                
+            </tr>
+        }
+    </tbody>
+</table> 
+

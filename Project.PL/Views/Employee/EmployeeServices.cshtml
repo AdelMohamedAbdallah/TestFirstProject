@@ -1,0 +1,34 @@
+﻿@model IEnumerable<EmployeeVM>
+@{
+    ViewData["Title"] = "EmployeeServices";
+    Layout = "~/Views/Layout/MainLayout.cshtml";
+}
+
+<style>
+    tbody,thead,tr,th,td{
+        text-align : center !important;
+    }
+</style>
+<a asp-controller="Employee" asp-action="Create" class="btn btn-success">Create New Employee</a>
+<br />
+<table class="table table-hover table-striped table-bordered text-center font-bold">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Hire Date</th>
+            <th>IsActive</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Employee_Fname @item.Employee_Lname</td>
+                <td>@item.Employee_Salary</td>
+                <td>@item.HireDate.ToShortDateString()</td>
+                <td>@item.IsActive</td>
+            </tr>
+        }
+    </tbody>
+</table>
