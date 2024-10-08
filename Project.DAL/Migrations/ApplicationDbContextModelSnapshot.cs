@@ -22,6 +22,45 @@ namespace Project.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Project.DAL.Entities.City", b =>
+                {
+                    b.Property<int>("City_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("City_Id"));
+
+                    b.Property<string>("City_Name")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int?>("Country_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("City_Id");
+
+                    b.HasIndex("Country_Id");
+
+                    b.ToTable("Cities", (string)null);
+                });
+
+            modelBuilder.Entity("Project.DAL.Entities.Country", b =>
+                {
+                    b.Property<int>("Country_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Country_Id"));
+
+                    b.Property<string>("Country_Name")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("Country_Id");
+
+                    b.ToTable("Countries", (string)null);
+                });
+
             modelBuilder.Entity("Project.DAL.Entities.Department", b =>
                 {
                     b.Property<int>("Department_Id")
@@ -51,6 +90,28 @@ namespace Project.DAL.Migrations
                     b.ToTable("Departments", (string)null);
                 });
 
+            modelBuilder.Entity("Project.DAL.Entities.District", b =>
+                {
+                    b.Property<int>("District_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("District_Id"));
+
+                    b.Property<int?>("City_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("District_Name")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("District_Id");
+
+                    b.HasIndex("City_Id");
+
+                    b.ToTable("Districts", (string)null);
+                });
+
             modelBuilder.Entity("Project.DAL.Entities.Employee", b =>
                 {
                     b.Property<int>("Employee_Id")
@@ -63,15 +124,21 @@ namespace Project.DAL.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("CVName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 9, 3, 11, 11, 49, 301, DateTimeKind.Local).AddTicks(369));
+                        .HasDefaultValue(new DateTime(2024, 9, 24, 23, 4, 16, 851, DateTimeKind.Local).AddTicks(5043));
 
                     b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("Department_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("District_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Employee_Email")
@@ -99,6 +166,9 @@ namespace Project.DAL.Migrations
                     b.Property<DateTime>("HireDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -119,6 +189,8 @@ namespace Project.DAL.Migrations
 
                     b.HasIndex("Department_Id");
 
+                    b.HasIndex("District_Id");
+
                     b.HasIndex("Employee_Email")
                         .IsUnique()
                         .HasFilter("[Employee_Email] IS NOT NULL");
@@ -133,18 +205,58 @@ namespace Project.DAL.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Project.DAL.Entities.City", b =>
+                {
+                    b.HasOne("Project.DAL.Entities.Country", "Country")
+                        .WithMany("Cities")
+                        .HasForeignKey("Country_Id")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("FK_Country_Id");
+
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("Project.DAL.Entities.District", b =>
+                {
+                    b.HasOne("Project.DAL.Entities.City", "City")
+                        .WithMany("Districts")
+                        .HasForeignKey("City_Id")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("FK_City_Id");
+
+                    b.Navigation("City");
+                });
+
             modelBuilder.Entity("Project.DAL.Entities.Employee", b =>
                 {
                     b.HasOne("Project.DAL.Entities.Department", "Department")
-                        .WithMany("Employees")
+                        .WithMany()
                         .HasForeignKey("Department_Id")
                         .OnDelete(DeleteBehavior.SetNull)
                         .HasConstraintName("FK_Department_Id");
 
+                    b.HasOne("Project.DAL.Entities.District", "District")
+                        .WithMany("Employees")
+                        .HasForeignKey("District_Id")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("FK_District_Id");
+
                     b.Navigation("Department");
+
+                    b.Navigation("District");
                 });
 
-            modelBuilder.Entity("Project.DAL.Entities.Department", b =>
+            modelBuilder.Entity("Project.DAL.Entities.City", b =>
+                {
+                    b.Navigation("Districts");
+                });
+
+            modelBuilder.Entity("Project.DAL.Entities.Country", b =>
+                {
+                    b.Navigation("Cities");
+                });
+
+            modelBuilder.Entity("Project.DAL.Entities.District", b =>
                 {
                     b.Navigation("Employees");
                 });

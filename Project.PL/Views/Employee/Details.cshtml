@@ -1,0 +1,69 @@
+﻿@model EmployeeVM
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Layout/MainLayout.cshtml";
+}
+
+<form  asp-action="EmployeeServices"  asp-controller="Employee" class="form-group">
+    
+    <label asp-for="Employee_Fname">@Localizer["FirstName"]</label>
+    <br />
+    <input type="text" asp-for="Employee_Fname"  class="form-control" readonly/>
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Lname">@Localizer["LastName"]</label>
+    <br />
+    <input type="text" asp-for="Employee_Lname" class="form-control" readonly />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Address">@Localizer["Address"]</label>
+    <br />
+    <input type="text" asp-for="Address" class="form-control" readonly />
+    <span asp-validation-for="Address" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Email">@Localizer["Email"]</label>
+    <br />
+    <input type="email" asp-for="Employee_Email" class="form-control" readonly />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Phone">@Localizer["PhoneNumber"]</label>
+    <br />
+    <input type="text" asp-for="Employee_Phone" class="form-control" readonly />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Salary">@Localizer["Salary"]</label>
+    <br />
+    <input type="text" asp-for="Employee_Salary" class="form-control" readonly />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="IsActive">@Localizer["IsActive"]</label>
+    <br />
+    <input type="text" asp-for="IsActive" class="form-control" readonly />
+    <span asp-validation-for="IsActive" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="HireDate">@Localizer["HireDate"]</label>
+    <br />
+    <input type="date" asp-for="HireDate" class="form-control" readonly />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="CreationDate">@Localizer["CreationDate"]</label>
+    <br />
+    <input type="date" asp-for="CreationDate" class="form-control" readonly />
+    <br />
+    <label asp-for="Department.Department_Name">@Localizer["Department"]</label>
+    <br />
+    <input type="text" asp-for="Department.Department_Name" class="form-control" readonly />
+    <br />
+    <label asp-for="District.District_Name">@Localizer["District"]</label>
+    <br />
+    <input type="text" asp-for="District.District_Name" class="form-control" readonly />
+    <br />
+    <center>
+        <input type="submit" value=@Localizer["Return"] class="btn btn-success" />
+        <a asp-controller="Employee" asp-action="Update" class="btn btn-warning" asp-route-id="@Model.Employee_Id">@Localizer["Update"]</a>
+        <a asp-controller="Employee" asp-action="Delete" class="btn btn-danger" asp-route-id="@Model.Employee_Id">@Localizer["Delete"]</a>
+    </center>
+
+</form>
+
+

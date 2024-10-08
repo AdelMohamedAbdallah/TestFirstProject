@@ -1,4 +1,6 @@
-﻿namespace Project.BLL.Repository
+﻿using System.Linq.Expressions;
+
+namespace Project.BLL.Repository
 {
     public class DepartmentRepo : IDepartmentRepo
     {
@@ -8,15 +10,22 @@
             this.db = db;
         }
 
-        public async Task<IEnumerable<Department>> GetAsync()
+        public async Task<IEnumerable<Department>> GetAsync(Expression<Func<Department, bool>>? filter = null)
         {
-            var data = db.Departments.AsNoTracking();
-            return data;
+            if (filter is null)
+                return await db.Departments.AsNoTracking()
+                                           .ToListAsync();
+
+            return await db.Departments.AsNoTracking()
+                                     .Where(filter)
+                                     .ToListAsync();
         }
 
-        public async Task<Department> GetByIdAsync(int id)
+        public async Task<Department> GetByAsync(Expression<Func<Department, bool>> filter)
         {
-            var data = await db.Departments.FindAsync(id);
+            var data = await db.Departments.AsNoTracking()
+                                         .Where(filter)
+                                         .FirstOrDefaultAsync();
 
             if (data == null)
                 throw new ArgumentNullException("No Result");

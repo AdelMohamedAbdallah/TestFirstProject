@@ -37,9 +37,16 @@ namespace Project.DAL.EntitiesConfiguration
             builder.Property(emp => emp.CreationDate).HasDefaultValue(DateTime.Now);
 
             builder.HasOne(emp => emp.Department)
-                .WithMany(dep => dep.Employees)
+                .WithMany(emp => emp.Employees)
                 .HasForeignKey(emp => emp.Department_Id)
                 .HasConstraintName("FK_Department_Id")
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            builder.HasOne(emp => emp.District)
+                .WithMany(dis => dis.Employees)
+                .HasForeignKey(emp => emp.District_Id)
+                .HasConstraintName("FK_District_Id")
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
 

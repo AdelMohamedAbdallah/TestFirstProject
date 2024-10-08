@@ -6,17 +6,17 @@
 
 <form asp-action="Delete" asp-controller="Department" class="form-group">
     <input type="hidden" asp-for="Department_Id" />
-    <label asp-for="Department_Name">Department Name</label>
+    <label asp-for="Department_Name">@Localizer["DepartmentName"]</label>
     <br />
     <input type="text" asp-for="Department_Name" class="form-control" readonly />
     <br />
-    <label asp-for="Department_Code">Department Code</label>
+    <label asp-for="Department_Code">@Localizer["DepartmentCode"]</label>
     <br />
     <input type="text" asp-for="Department_Code" class="form-control" readonly />
     <br />
     <center>
-        <input type="submit" value="Delet" class="btn btn-danger" />
-        <a asp-controller="Department" asp-action="DepartmentServices" class="btn btn-success">Cancel</a>
+        <input type="submit" value=@Localizer["Delete"] class="btn btn-danger" />
+        <a asp-controller="Department" asp-action="DepartmentServices" class="btn btn-success">@Localizer["Cancel"]</a>
     </center>
 </form>
 

@@ -1,0 +1,102 @@
+﻿@using Project.BLL.Services
+@* @inject IDepartmentRepo department *@
+@inject ICountryRepo country
+@model EmployeeVM
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Layout/MainLayout.cshtml";
+}
+
+@section DataTableStyle {
+    <link href="~/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet" />
+}
+
+<form asp-action="Update" asp-controller="Employee" class="form-group">
+    <input type="hidden" asp-for="Employee_Id" class="form-control" />
+    <input type="hidden" asp-for="CreationDate" class="form-control" />
+    <label asp-for="Employee_Fname">@Localizer["FirstName"]</label>
+    <br />
+    <input type="text" asp-for="Employee_Fname" class="form-control" />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Lname">@Localizer["LastName"]</label>
+    <br />
+    <input type="text" asp-for="Employee_Lname" class="form-control" />
+    <span asp-validation-for="Employee_Fname" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Address">@Localizer["Address"]</label>
+    <br />
+    <input type="text" asp-for="Address" class="form-control" placeholder=@Localizer["PLHAddress"] />
+    <span asp-validation-for="Address" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Email">@Localizer["Email"]</label>
+    <br />
+    <input type="email" asp-for="Employee_Email" class="form-control" />
+    <span asp-validation-for="Employee_Email" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Phone">@Localizer["PhoneNumber"]</label>
+    <br />
+    <input type="text" asp-for="Employee_Phone" class="form-control" />
+    <span asp-validation-for="Employee_Phone" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Employee_Salary">@Localizer["Salary"]</label>
+    <br />
+    <input type="text" asp-for="Employee_Salary" class="form-control" />
+    <span asp-validation-for="Employee_Salary" class="text-danger font-bold"></span>
+    <br />
+    <label asp-for="Image">@Localizer["Image"]</label>
+    <br />
+    <input type="file" asp-for="Image" class="form-control" />
+    <br />
+
+    <label asp-for="CV">@Localizer["CV"]</label>
+    <br />
+    <input type="file" asp-for="CV" class="form-control" />
+    <br />
+    <div class="demo-checkbox">
+        <input type="checkbox" asp-for="IsActive" checked>
+        <label asp-for="IsActive">@Localizer["IsActive"]</label>
+        <span asp-validation-for="IsActive" class="text-danger font-bold"></span>
+    </div>
+    <br />
+    <label asp-for="HireDate">@Localizer["HireDate"]</label>
+    <br />
+    <input type="date" asp-for="HireDate" class="form-control" />
+    <span asp-validation-for="HireDate" class="text-danger font-bold"></span>
+    <br />
+    <select asp-for="Department_Id" asp-items="ViewBag.departmentlist">
+        <option>@Localizer["Department"]</option>
+    </select>
+    <br />
+    <br />
+    <select id="CountryList">
+        <option>@Localizer["ChooseCountry"]</option>
+        @foreach (var item in await country.GetAsync())
+        {
+            <option value="@item.Country_Id">@item.Country_Name</option>
+        }
+    </select>
+    <br />
+    <br />
+    <select id="CityList">
+        <option>@Localizer["ChooseCity"]</option>
+    </select>
+    <br />
+    <br />
+    <select asp-for="District_Id">
+        <option>@Localizer["ChooseDistrict"]</option>
+    </select>
+    <br />
+    <center>
+        <input type="submit" value=@Localizer["Save"] class="btn btn-success" />
+        <input type="submit" value=@Localizer["Reset"] class="btn btn-warning" />
+        <a asp-controller="Employee" asp-action="EmployeeServices" class="btn btn-danger">@Localizer["Cancel"]</a>
+    </center>
+
+</form>
+
+@section JqueryValidation {
+    <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

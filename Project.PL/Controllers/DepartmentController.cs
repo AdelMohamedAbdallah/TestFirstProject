@@ -51,14 +51,14 @@ namespace Project.PL.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var data = await depart.GetByIdAsync(id);
+            var data = await depart.GetByAsync(dep => dep.Department_Id == id);
             var result = mapper.Map<DepartmentVM>(data);
             return View(result);
         }
 
         public async Task<IActionResult> Update(int id)
         {
-            var data = await depart.GetByIdAsync(id);
+            var data = await depart.GetByAsync(dep => dep.Department_Id == id);
             var result = mapper.Map<DepartmentVM>(data);
             return View(result);
         }
@@ -85,7 +85,7 @@ namespace Project.PL.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            var data = await depart.GetByIdAsync(id);
+            var data = await depart.GetByAsync(dep => dep.Department_Id == id);
             var result = mapper.Map<DepartmentVM>(data);
             return View(result);
         }

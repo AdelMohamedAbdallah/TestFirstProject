@@ -1,4 +1,6 @@
-﻿namespace Project.DAL.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace Project.DAL.Entities
 {
     public class Department
     {
@@ -8,6 +10,7 @@
 
         public string Department_Code { get; set; }
 
+        [JsonIgnore]
         public List<Employee> Employees { get; set; } = new List<Employee>();
     }
 }

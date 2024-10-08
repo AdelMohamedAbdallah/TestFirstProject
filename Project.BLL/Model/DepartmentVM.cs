@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Project.BLL.Model
 {
@@ -8,12 +9,15 @@ namespace Project.BLL.Model
         [Required(ErrorMessage = "Department Name Is Required")]
         [MaxLength(30, ErrorMessage = "Max Length 30 char")]
         [MinLength(2, ErrorMessage = "Min Length 2 char ")]
+        //[DepartmentNameExists(ErrorMessage = "Department name already exist")]
         public string Department_Name { get; set; }
         [Required(ErrorMessage = "Department Code Is Required")]
         [MaxLength(30, ErrorMessage = "Max Length 30 char")]
         [MinLength(2, ErrorMessage = "Min Length 2 char ")]
+        //[Compare("", ErrorMessage = "")]
         public string Department_Code { get; set; }
 
+        [JsonIgnore]
         public List<Employee> Employees { get; set; } = new List<Employee>();
     }
 }
