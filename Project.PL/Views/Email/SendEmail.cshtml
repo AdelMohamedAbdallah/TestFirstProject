@@ -1,0 +1,35 @@
+﻿@model EmailVM
+@{
+    ViewData["Title"] = "SendEmail";
+    Layout = "~/Views/Layout/MainLayout.cshtml";
+}
+
+<h2>SendEmail</h2>
+<br />
+<br />
+<h3 >@ViewBag.Message</h3>
+<br />
+<br />
+
+<form asp-controller="Email" asp-action="SendEmail" class="form-group">
+    <lable asp-for="Title">Title</lable>
+    <br />
+    <input type="text" asp-for="Title" class="form-control"/>
+    <span asp-validation-for="Title" class="text-denger font-bold"></span>
+    <br />
+
+    <lable asp-for="Message">Message</lable>
+    <br />
+    <textarea asp-for="Message" class="form-control"></textarea>
+    <span asp-validation-for="Message" class="text-denger font-bold"></span>
+    <br />
+    <br />
+    <center>
+        <input type="submit" value="Send" class="btn btn-Pink btn-block" />
+    </center>
+</form>
+
+@section JqueryValidation {
+    <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

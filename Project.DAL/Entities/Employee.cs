@@ -30,8 +30,16 @@
 
         public DateTime UpdatedDate { get; set; }
 
+        public string? ImageName { get; set; }
+
+        public string? CVName { get; set; }
+
         public int? Department_Id { get; set; }
 
+        public int? District_Id { get; set; }
+
         public Department? Department { get; set; }
+
+        public District? District { get; set; }
     }
 }

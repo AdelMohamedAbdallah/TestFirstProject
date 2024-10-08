@@ -6,20 +6,20 @@
 
 <form asp-action="Update" asp-controller="Department" class="form-group">
     <input type="hidden"  asp-for="Department_Id"/>
-    <label asp-for="Department_Name">Department Name</label>
+    <label asp-for="Department_Name">@Localizer["DepartmentName"]</label>
     <br />
     <input type="text" asp-for="Department_Name" class="form-control" />
     <span asp-validation-for="Department_Name" class="text-danger font-bold"></span>
     <br />
-    <label asp-for="Department_Code">Department Code</label>
+    <label asp-for="Department_Code">@Localizer["DepartmentCode"]</label>
     <br />
     <input type="text" asp-for="Department_Code" class="form-control" />
     <span asp-validation-for="Department_Code" class="text-danger font-bold"></span>
     <br />
     <center>
-        <input type="submit" value="Save" class="btn btn-success" />
-        <input type="reset" value="Cancel" class="btn btn-warning" />
-        <a asp-controller="Department" asp-action="Delete" asp-route-id ="@Model.Department_Id" class="btn btn-danger">Delete</a>
+        <input type="submit" value=@Localizer["Save"] class="btn btn-success" />
+        <input type="reset" value=@Localizer["Reset"] class="btn btn-warning" />
+        <a asp-controller="Department" asp-action="Delete" asp-route-id="@Model.Department_Id" class="btn btn-danger">@Localizer["Delete"]</a>
     </center>
 </form>
 

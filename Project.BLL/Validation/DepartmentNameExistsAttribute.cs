@@ -7,7 +7,7 @@ namespace Project.BLL.Validation
     {
         protected override ValidationResult IsValid(object? value, ValidationContext validationContext)
         {
-            var dbContext = (ApplicationDbContext?)validationContext.GetService(typeof(ApplicationDbContext));
+            var dbContext = (ApplicationDbContext)validationContext.GetService(typeof(ApplicationDbContext));
             if (dbContext.Departments.Any(dep => dep.Department_Name == value.ToString()))
             {
                 return new ValidationResult("");

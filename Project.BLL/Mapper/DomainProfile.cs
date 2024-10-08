@@ -10,6 +10,17 @@ namespace Project.BLL.Mapper
 
             CreateMap<Employee, EmployeeVM>();
             CreateMap<EmployeeVM, Employee>();
+
+            CreateMap<City, CityVM>();
+            CreateMap<CityVM, City>();
+
+            CreateMap<Country, CountryVM>();
+            CreateMap<CountryVM, Country>();
+
+            CreateMap<District, DistrictVM>();
+            CreateMap<DistrictVM, District>();
+
+
         }
     }
 }

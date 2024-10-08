@@ -6,20 +6,20 @@
 
 <form asp-action="Create" asp-controller="Department" class="form-group">
     <br />
-    <label asp-for="Department_Name">Department Name</label>
+    <label asp-for="Department_Name">@Localizer["DepartmentName"]</label>
     <br />
-    <input type="text" asp-for="Department_Name" placeholder="example = SQL" class="form-control" />
+    <input type="text" asp-for="Department_Name" placeholder=@Localizer["PLHDN"] class="form-control" />
     <span asp-validation-for="Department_Name"  class="text-danger font-bold"></span>
     <br />
-    <label asp-for="Department_Code">Department Code</label>
+    <label asp-for="Department_Code">@Localizer["DepartmentCode"]</label>
     <br />
-    <input type="text" asp-for="Department_Code" placeholder="example = SQ873" class="form-control" />
+    <input type="text" asp-for="Department_Code" placeholder=@Localizer["PLHDC"] class="form-control" />
     <span asp-validation-for="Department_Code" class="text-danger font-bold"></span>
     <br />
     <center>
-        <input type="submit" value="Save" class="btn btn-success" />
-        <input type="reset" value="Reset" class="btn btn-warning"/>
-        <a asp-controller="Department" asp-action="DepartmentServices" class="btn btn-danger" >Cancel</a>
+        <input type="submit" value=@Localizer["Save"] class="btn btn-success" />
+        <input type="reset" value=@Localizer["Reset"] class="btn btn-warning" />
+        <a asp-controller="Department" asp-action="DepartmentServices" class="btn btn-danger">@Localizer["Cancel"]</a>
     </center>
 </form>
 

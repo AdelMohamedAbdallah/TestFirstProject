@@ -4,33 +4,109 @@
     ViewBag.Title = "Department Services";
 }
 
+@section DataTableStyle {
+    <link href="~/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet" />
+}
 <style>
     td,tbody,thead,tr,th{
         text-align : center !important;
     }
 </style>
 
-<a asp-controller="Department" asp-action="Create" class="btn btn-success">Create new department</a>
+<a asp-controller="Department" asp-action="Create" class="btn btn-success">@Localizer["CreateNewDepartment"]</a>
 <br />
-<table  class=" table table-hover table-striped text-center table-bordered  font-bold">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Code</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var item in Model)
-        {
-            <tr>
-                <td> @item.Department_Name </td>
-                <td> @item.Department_Code </td>
-                    <td> <a asp-controller="Department" asp-action="Details" asp-route-id="@item.Department_Id"  class="btn btn-success">Details</a></td>
-                <td> <a asp-controller="Department" asp-action="Update" asp-route-id="@item.Department_Id" class="btn btn-warning">Update</a></td>
-                <td> <a asp-controller="Department" asp-action="Delete" asp-route-id="@item.Department_Id" class="btn btn-danger">Delete</a></td>
-                
-            </tr>
-        }
-    </tbody>
-</table> 
+<br />
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>@Localizer["DepartmentsData"]</h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="javascript:void(0);">Action</a></li>
+                                <li><a href="javascript:void(0);">Another action</a></li>
+                                <li><a href="javascript:void(0);">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <thead>
+                                <tr>
+                                    <th>@Localizer["Name"]</th>
+                                    <th>@Localizer["Code"]</th>
+                                    <th>@Localizer["Details"]</th>
+                                    <th>@Localizer["Update"]</th>
+                                    <th>@Localizer["Delete"]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td> @item.Department_Name </td>
+                                        <td> @item.Department_Code </td>
+                                        <td> <a asp-controller="Department" asp-action="Details" asp-route-id="@item.Department_Id" class="btn btn-success">@Localizer["Details"]</a></td>
+                                        <td> <a asp-controller="Department" asp-action="Update" asp-route-id="@item.Department_Id" class="btn btn-warning">@Localizer["Update"]</a></td>
+                                        <td> <a asp-controller="Department" asp-action="Delete" asp-route-id="@item.Department_Id" class="btn btn-danger">@Localizer["Delete"]</a></td>
 
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section DataTableJS {
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="~/plugins/jquery-datatable/jquery.datatables.js"></script>
+    <script src="~/plugins/jquery-datatable/skin/bootstrap/js/datatables.bootstrap.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <script>
+        $(function () {
+            $('.js-basic-example').DataTable({
+                responsive: true,
+                paging: true,
+                pageLength: 5,
+                bSort: true,
+                bFilter: true,
+                bLengthChange: true,
+                bInfo: true,
+                // lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                lengthMenu: [[2, 5, 10, 25, 50], [2, 5, 10, 25, 50]],
+            });
+            var table = $('.js-basic-example').DataTable();
+
+            new $.fn.dataTable.Buttons(table, {
+                buttons: [
+                    'copy', 'excel', 'pdf', 'csv', 'print'
+                ]
+            });
+
+            table.buttons().container()
+                .appendTo($('.col-sm-6:eq(0)', table.table().container()));
+
+        });
+    </script>
+}

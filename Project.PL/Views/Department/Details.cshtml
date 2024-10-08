@@ -5,18 +5,18 @@
 }
 
 <form asp-action="Create" asp-controller="Department" class="form-group">
-    <label asp-for="Department_Name">Department Name</label>
+    <label asp-for="Department_Name">@Localizer["DepartmentName"]</label>
     <br />
     <input type="text" class="form-control" asp-for="Department_Name" readonly />
     <br />
-    <lable asp-for="Department_Code">Department Code</lable>
+    <lable asp-for="Department_Code">@Localizer["DepartmentCode"]</lable>
     <br />
     <input type="text" class="form-control" asp-for="Department_Code" readonly />
     <br />
     <center>
-        <a asp-controller="Department" asp-action="DepartmentServices" class="btn btn-success">Return</a>
-        <a asp-controller="Department" asp-action="Update" asp-route-id="@Model.Department_Id" class="btn btn-warning">Update</a>
-        <a asp-controller="Department" asp-action="Delete" asp-route-id="@Model.Department_Id"  class="btn btn-danger">Delete</a>
+        <a asp-controller="Department" asp-action="DepartmentServices" class="btn btn-success">@Localizer["Return"]</a>
+        <a asp-controller="Department" asp-action="Update" asp-route-id="@Model.Department_Id" class="btn btn-warning">@Localizer["Update"]</a>
+        <a asp-controller="Department" asp-action="Delete" asp-route-id="@Model.Department_Id" class="btn btn-danger">@Localizer["Delete"]</a>
     </center>
 </form>
 

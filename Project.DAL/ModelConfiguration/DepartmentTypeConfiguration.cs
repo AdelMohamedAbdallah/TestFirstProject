@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Project.DAL.Entities;
-
 namespace Project.DAL.EntitiesConfiguration
 {
     public class DepartmentTypeConfiguration : IEntityTypeConfiguration<Department>
