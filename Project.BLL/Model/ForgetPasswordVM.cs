@@ -2,18 +2,12 @@
 
 namespace Project.BLL.Model
 {
-    public class EmailVM
+    public class ForgetPasswordVM
     {
         [Required(ErrorMessage = "Email Is Required")]
         [MinLength(20, ErrorMessage = "MinLength 20 char")]
         [EmailAddress(ErrorMessage = "Not Vaild Email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Title is required")]
-        [MaxLength(50, ErrorMessage = "Max Length 50 char")]
-        public string Title { get; set; }
-
-        [Required(ErrorMessage = "Message is required")]
-        public string Message { get; set; }
     }
 }

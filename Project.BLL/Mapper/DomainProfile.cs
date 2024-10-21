@@ -1,4 +1,5 @@
 ﻿using Project.BLL.Model;
+using Project.DAL.Extend;
 namespace Project.BLL.Mapper
 {
     public class DomainProfile : Profile
@@ -19,6 +20,9 @@ namespace Project.BLL.Mapper
 
             CreateMap<District, DistrictVM>();
             CreateMap<DistrictVM, District>();
+
+            CreateMap<SignUpVM, ApplicationUser>();
+            CreateMap<ApplicationUser, SignUpVM>();
 
 
         }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Project.BLL.Helper;
 using Project.BLL.Model;
 using Project.BLL.Services;
+using Project.DAL.ConnectionData;
 using Project.DAL.Entities;
 
 namespace Project.Apis.Controllers
@@ -13,11 +14,13 @@ namespace Project.Apis.Controllers
     {
         private readonly IDepartmentRepo department;
         private readonly IMapper mapper;
+        private readonly ApplicationDbContext db;
 
-        public DepartmentController(IDepartmentRepo department, IMapper mapper)
+        public DepartmentController(IDepartmentRepo department, IMapper mapper, ApplicationDbContext db)
         {
             this.department = department;
             this.mapper = mapper;
+            this.db = db;
         }
 
 
