@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Partials\**" />
+    <Content Remove="Views\Partials\**" />
+    <EmbeddedResource Remove="Views\Partials\**" />
+    <None Remove="Views\Partials\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <COMReference Include="Accessibility">
       <WrapperTool>tlbimp</WrapperTool>
       <VersionMinor>1</VersionMinor>
@@ -19,11 +26,53 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Project.BLL\Project.BLL.csproj" />
+    <None Include="wwwroot\css\materialize.css" />
+    <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\css\style.min.css" />
+    <None Include="wwwroot\css\themes\all-themes.css" />
+    <None Include="wwwroot\css\themes\all-themes.min.css" />
+    <None Include="wwwroot\css\themes\theme-amber.css" />
+    <None Include="wwwroot\css\themes\theme-amber.min.css" />
+    <None Include="wwwroot\css\themes\theme-black.css" />
+    <None Include="wwwroot\css\themes\theme-black.min.css" />
+    <None Include="wwwroot\css\themes\theme-blue-grey.css" />
+    <None Include="wwwroot\css\themes\theme-blue-grey.min.css" />
+    <None Include="wwwroot\css\themes\theme-blue.css" />
+    <None Include="wwwroot\css\themes\theme-blue.min.css" />
+    <None Include="wwwroot\css\themes\theme-brown.css" />
+    <None Include="wwwroot\css\themes\theme-brown.min.css" />
+    <None Include="wwwroot\css\themes\theme-cyan.css" />
+    <None Include="wwwroot\css\themes\theme-cyan.min.css" />
+    <None Include="wwwroot\css\themes\theme-deep-orange.css" />
+    <None Include="wwwroot\css\themes\theme-deep-orange.min.css" />
+    <None Include="wwwroot\css\themes\theme-deep-purple.css" />
+    <None Include="wwwroot\css\themes\theme-deep-purple.min.css" />
+    <None Include="wwwroot\css\themes\theme-green.css" />
+    <None Include="wwwroot\css\themes\theme-green.min.css" />
+    <None Include="wwwroot\css\themes\theme-grey.css" />
+    <None Include="wwwroot\css\themes\theme-grey.min.css" />
+    <None Include="wwwroot\css\themes\theme-indigo.css" />
+    <None Include="wwwroot\css\themes\theme-indigo.min.css" />
+    <None Include="wwwroot\css\themes\theme-light-blue.css" />
+    <None Include="wwwroot\css\themes\theme-light-blue.min.css" />
+    <None Include="wwwroot\css\themes\theme-lime.css" />
+    <None Include="wwwroot\css\themes\theme-lime.min.css" />
+    <None Include="wwwroot\css\themes\theme-orange.css" />
+    <None Include="wwwroot\css\themes\theme-orange.min.css" />
+    <None Include="wwwroot\css\themes\theme-pink.css" />
+    <None Include="wwwroot\css\themes\theme-pink.min.css" />
+    <None Include="wwwroot\css\themes\theme-purple.css" />
+    <None Include="wwwroot\css\themes\theme-purple.min.css" />
+    <None Include="wwwroot\css\themes\theme-red.css" />
+    <None Include="wwwroot\css\themes\theme-red.min.css" />
+    <None Include="wwwroot\css\themes\theme-teal.css" />
+    <None Include="wwwroot\css\themes\theme-teal.min.css" />
+    <None Include="wwwroot\css\themes\theme-yellow.css" />
+    <None Include="wwwroot\css\themes\theme-yellow.min.css" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Partials\" />
+    <ProjectReference Include="..\Project.BLL\Project.BLL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

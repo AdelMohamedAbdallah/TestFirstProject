@@ -17,5 +17,9 @@ namespace Project.BLL.Model
         [Compare("Password", ErrorMessage = "Password Not Matching")]
         [PasswordPropertyText()]
         public string ConfirmPassword { get; set; }
+
+        public string? Email { get; set; }
+
+        public string? Token { get; set; }
     }
 }
