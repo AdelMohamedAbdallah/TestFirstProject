@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -5,6 +7,7 @@ using Project.BLL.Mapper;
 using Project.BLL.Repository;
 using Project.BLL.Services;
 using Project.DAL.ConnectionData;
+using Project.DAL.Extend;
 using Project.PL.Languages;
 using System.Globalization;
 using System.Text.Json.Serialization;
@@ -71,11 +74,46 @@ builder.Services.Configure<RequestLocalizationOptions>(option =>
     option.SupportedUICultures = supportedCultures;
     option.RequestCultureProviders = new List<IRequestCultureProvider>
                 {
-                new QueryStringRequestCultureProvider(),
-                new CookieRequestCultureProvider()
+                    new QueryStringRequestCultureProvider(),
+                    new CookieRequestCultureProvider()
                 };
 });
 
+
+
+// Identity Configuration
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+    options =>
+    {
+        options.LoginPath = new PathString("/User/SignIn");
+        options.AccessDeniedPath = new PathString("/User/SignIn");
+    });
+
+
+// Add Confirmed Account
+builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
+
+
+
+// Password and user name configuration
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
+    // Default Password settings.
+
+    options.User.RequireUniqueEmail = true;
+
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequiredUniqueChars = 0;
+}).AddEntityFrameworkStores<ApplicationDbContext>();
 
 
 var app = builder.Build();
@@ -96,10 +134,12 @@ app.UseRouting();
 var localizationoptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
 app.UseRequestLocalization(localizationoptions);
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=User}/{action=SignIn}/{id?}");
 
 app.Run();

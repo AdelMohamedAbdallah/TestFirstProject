@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -84,7 +85,7 @@
                             <span class="label-count">7</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">NOTIFICATIONS</li>
+                            @* <li class="header">NOTIFICATIONS</li> *@
                             <li class="body">
                                 <ul class="menu">
                                     <li>
@@ -96,9 +97,9 @@
                                     
                                 </ul>
                             </li>
-                            <li class="footer">
+                            @* <li class="footer">
                                 <a href="javascript:void(0);">View All Notifications</a>
-                            </li>
+                            </li> *@
                         </ul>
                     </li>
                     <!-- #END# Notifications -->
@@ -196,8 +197,8 @@
 
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Adel Mohamed</div>
-                    <div class="email">adel2852003adel@gmail.com</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello @User.Identity.Name</div>
+                    <div class="email">@User.FindFirstValue(ClaimTypes.Email)</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
@@ -207,7 +208,7 @@
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                             <li role="seperator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a asp-controller="User" asp-action="Signout"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -256,7 +257,7 @@
                                 <a asp-controller="Email" asp-action="SendEmail">@Localizer["Send"]</a>
                             </li>
                             <li>
-                                <a asp-controller="#" asp-action="#">@Localizer["Inbox"]</a>
+                                <a href = "https://mail.google.com/mail/u/0/#inbox">@Localizer["Inbox"]</a>
                             </li>
                         </ul>
                     </li>

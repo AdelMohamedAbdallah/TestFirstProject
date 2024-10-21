@@ -1,28 +1,20 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Project.BLL.Helper;
-using Project.BLL.Model;
-using Project.BLL.Services;
-using Project.DAL.Entities;
-
-namespace Project.PL.Controllers
+﻿namespace Project.PL.Controllers
 {
     public class EmployeeController : Controller
     {
         private readonly IEmployeeRepo emp;
-        private readonly IMapper mapper;
-        private readonly IDepartmentRepo department;
-        private readonly ICityRepo city;
-        private readonly IDistrictRepo district;
+        private readonly IMapper mapperu;
+        private readonly IDepartmentRepo depart;
+        private readonly ICityRepo cityu;
+        private readonly IDistrictRepo districtu;
 
         public EmployeeController(IEmployeeRepo emp, IMapper mapper, IDepartmentRepo department, ICityRepo city, IDistrictRepo district)
         {
-            this.emp = emp;
-            this.mapper = mapper;
-            this.department = department;
-            this.city = city;
-            this.district = district;
+            emp = emp;
+            mapperu = mapper;
+            depart = department;
+            cityu = city;
+            districtu = district;
         }
 
         public async Task<IActionResult> EmployeeServices(string searchvalue)
