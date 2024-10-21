@@ -118,97 +118,165 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Department" xml:space="preserve">
-    <value>Department</value>
+    <value>القسم</value>
   </data>
   <data name="Employee" xml:space="preserve">
-    <value>Employee</value>
+    <value>الموظف</value>
   </data>
   <data name="CreateNewDepartment" xml:space="preserve">
-    <value>Create New Department</value>
+    <value>إضافة قسم جديد</value>
   </data>
   <data name="CreateNewEmployee" xml:space="preserve">
-    <value>Create New Employee</value>
-  </data>
-  <data name="Update" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>إضافة موظف جديد</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>حفظ</value>
   </data>
-  <data name="Details" xml:space="preserve">
-    <value>Details</value>
+  <data name="Update" xml:space="preserve">
+    <value>تحديث</value>
   </data>
-  <data name="FirstName" xml:space="preserve">
-    <value>First Name</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>تراجع </value>
   </data>
-  <data name="EmployeeServices" xml:space="preserve">
-    <value>Employee Services</value>
+  <data name="Reset" xml:space="preserve">
+    <value>إعادة ملء</value>
   </data>
   <data name="DepartmentServices" xml:space="preserve">
-    <value>Department Services</value>
+    <value>خدمات القسم </value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
+  <data name="EmployeeServices" xml:space="preserve">
+    <value>خدمات الموظف</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="DeletedEmployee" xml:space="preserve">
+    <value>الموظفين المحذوفين</value>
+  </data>
+  <data name="DepartmentName" xml:space="preserve">
+    <value>اسم القسم</value>
+  </data>
+  <data name="DepartmentCode" xml:space="preserve">
+    <value>رمز القسم</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>الاسم الأول</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Last Name</value>
+    <value>السم الأخير</value>
   </data>
   <data name="Address" xml:space="preserve">
-    <value>Address</value>
-  </data>
-  <data name="PLHAddress" xml:space="preserve">
-    <value>176-Streetname-City-Country</value>
+    <value>العنوان </value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email
-</value>
-  </data>
-  <data name="Salary" xml:space="preserve">
-    <value>Salary</value>
+    <value>البريد الإلكترونى</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
   </data>
-  <data name="IsActive" xml:space="preserve">
-    <value>IsActive</value>
+  <data name="Salary" xml:space="preserve">
+    <value>الراتب</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>الصورة</value>
+  </data>
+  <data name="CV" xml:space="preserve">
+    <value>السيرة الذاتيه</value>
   </data>
   <data name="HireDate" xml:space="preserve">
-    <value>HireDate</value>
+    <value>تاريخ بدء العمل</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>نشط</value>
   </data>
   <data name="ChooseCountry" xml:space="preserve">
-    <value>Choose Country</value>
+    <value>اختر الدولة</value>
   </data>
   <data name="ChooseCity" xml:space="preserve">
-    <value>Choose City</value>
+    <value>اختر المدينة</value>
   </data>
   <data name="ChooseDistrict" xml:space="preserve">
-    <value>Choose District</value>
+    <value>اختر الحي</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="EmployeesData" xml:space="preserve">
+    <value>بيانات الموظفين</value>
   </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Reset</value>
+  <data name="DownloadCV" xml:space="preserve">
+    <value>تحميل السيرة الذاتية</value>
   </data>
-  <data name="District" xml:space="preserve">
-    <value>District</value>
+  <data name="Details" xml:space="preserve">
+    <value>التفاصيل</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
+    <value>الاسم</value>
   </data>
-  <data name="DeletedEmployee" xml:space="preserve">
-    <value>Deleted Employee</value>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="DepartmentsData" xml:space="preserve">
+    <value>بيانات الأقسام</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="PLHAddress" xml:space="preserve">
+    <value>176-Streetname-City-Country</value>
+  </data>
+  <data name="Department Name Is Required" xml:space="preserve">
+    <value>اسم القسم مطلوب</value>
+  </data>
+  <data name="Max Length 30 char" xml:space="preserve">
+    <value>أقصى عدد من الأحرف 30 حرف</value>
+  </data>
+  <data name="Min Length 2 char" xml:space="preserve">
+    <value>أقل عدد من الحرف 2 حرف</value>
+  </data>
+  <data name="Department name already exist" xml:space="preserve">
+    <value>اسم القسم موجود بالفعل</value>
+  </data>
+  <data name="Department Code Is Required" xml:space="preserve">
+    <value>رمز القسم مطلوب</value>
+  </data>
+  <data name="Enter Like This: 176-Streetname-City-Country" xml:space="preserve">
+    <value>اسم الدولة-اسم المدينة-اسم الحي-176</value>
+  </data>
+  <data name="First Name Is Required" xml:space="preserve">
+    <value>الاسم الأول مطلوب</value>
+  </data>
+  <data name="Last Name Is Required" xml:space="preserve">
+    <value>الاسم الأخير مطلوب</value>
+  </data>
+  <data name="Email not valid" xml:space="preserve">
+    <value>البريد الإلكترونى غير صالح</value>
+  </data>
+  <data name="Enter Like This 01143254939" xml:space="preserve">
+    <value>ادخل مثل هذا 01143254939</value>
+  </data>
+  <data name="Phone Number Is Required" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
+  <data name="Salary Is Required" xml:space="preserve">
+    <value>الراتب مطلوب</value>
+  </data>
+  <data name="HireDate Is Required" xml:space="preserve">
+    <value>تاريخ بدء العمل مطلوب</value>
   </data>
   <data name="Code" xml:space="preserve">
-    <value>Code</value>
+    <value>الرمز</value>
   </data>
-  <data name="DepartmentName" xml:space="preserve">
-    <value>Department Name</value>
+  <data name="Return" xml:space="preserve">
+    <value>عودة</value>
   </data>
-  <data name="DepartmentCode" xml:space="preserve">
-    <value>Department Code</value>
+  <data name="PLHDN" xml:space="preserve">
+    <value>مثال = SQL</value>
+  </data>
+  <data name="PLHDC" xml:space="preserve">
+    <value>مثال = SQ764</value>
+  </data>
+  <data name="CreationDate" xml:space="preserve">
+    <value>تاريخ الإنشاء</value>
+  </data>
+  <data name="District" xml:space="preserve">
+    <value>الحي</value>
   </data>
 </root>

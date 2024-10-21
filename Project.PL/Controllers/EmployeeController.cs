@@ -1,20 +1,29 @@
-﻿namespace Project.PL.Controllers
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Project.BLL.Helper;
+using Project.BLL.Model;
+using Project.BLL.Services;
+using Project.DAL.Entities;
+
+
+namespace Project.PL.Controllers
 {
     public class EmployeeController : Controller
     {
         private readonly IEmployeeRepo emp;
-        private readonly IMapper mapperu;
+        private readonly IMapper mapper;
         private readonly IDepartmentRepo depart;
-        private readonly ICityRepo cityu;
-        private readonly IDistrictRepo districtu;
+        private readonly ICityRepo city;
+        private readonly IDistrictRepo district;
 
         public EmployeeController(IEmployeeRepo emp, IMapper mapper, IDepartmentRepo department, ICityRepo city, IDistrictRepo district)
         {
-            emp = emp;
-            mapperu = mapper;
-            depart = department;
-            cityu = city;
-            districtu = district;
+            this.emp = emp;
+            this.mapper = mapper;
+            this.depart = department;
+            this.city = city;
+            this.district = district;
         }
 
         public async Task<IActionResult> EmployeeServices(string searchvalue)
@@ -36,7 +45,7 @@
 
         public async Task<IActionResult> Create()
         {
-            var data = await department.GetAsync();
+            var data = await depart.GetAsync();
             ViewBag.departmentlist = new SelectList(data, "Department_Id", "Department_Name");
             return View();
         }
@@ -59,7 +68,7 @@
             {
                 ViewBag.Message = ex.Message;
             }
-            var departments = await department.GetAsync();
+            var departments = await depart.GetAsync();
             ViewBag.departmentlist = new SelectList(departments, "Department_Id", "Department_Name");
             return View(employee);
         }
@@ -101,7 +110,7 @@
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var departments = await department.GetAsync();
+            var departments = await depart.GetAsync();
             ViewBag.departmentlist = new SelectList(departments, "Department_Id", "Department_Name");
             var data = await emp.GetByAsync(emp => emp.Employee_Id == id && emp.IsActive == true && emp.IsDeleted == false);
             var result = mapper.Map<EmployeeVM>(data);

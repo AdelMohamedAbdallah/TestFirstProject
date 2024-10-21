@@ -125,15 +125,39 @@ namespace Project.PL.Controllers
         }
 
         [HttpGet]
-        public IActionResult ResetPassword()
+        public IActionResult ResetPassword(string? Email, string? Token)
         {
-            return View();
+            if (Email != null && Token != null)
+            {
+                return View();
+            }
+
+            return RedirectToAction("ForgetPassword");
         }
 
         [HttpPost]
-        public IActionResult ResetPassword(ResetPasswordVM resetPassword)
+        public async Task<IActionResult> ResetPasswordAsync(ResetPasswordVM resetPassword)
         {
-            return View();
+            var user = await userManager.FindByEmailAsync(resetPassword.Email);
+
+            if (user != null)
+            {
+                var result = await userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Password);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ConfirmResetPassword");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View(resetPassword);
+            }
+
+            return RedirectToAction("ConfirmResetPassword");
         }
 
         [HttpGet]
